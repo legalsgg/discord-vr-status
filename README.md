@@ -3,9 +3,13 @@
 Give your Discord bot the **VR status**: the VR headset icon on its profile, the one Discord shows for
 people using the Meta Quest app.
 
+<img src="assets/vr-status.png" alt="A bot's profile showing the VR headset icon" width="220">
+
 Works with [discord.py](https://github.com/Rapptz/discord.py) 2.x. One small file, no extra dependencies.
 
 > Unofficial. Discord doesn't document this and could stop it from working at any time.
+
+⭐ If this helped your bot, consider giving the repo a star!
 
 ## How to give your bot the VR status
 
