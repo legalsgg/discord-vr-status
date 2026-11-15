@@ -53,11 +53,29 @@ bot connects as online. It uses your normal bot token and changes nothing else.
 
 The bot can't check this itself, because Discord doesn't send a bot its own presence. Look at its profile.
 
-## Other libraries
+## Other languages and libraries
 
-The same values work in any library: find where it builds the identify payload (opcode `2`, with a
-`properties` object), set `os`, `browser` and `device` as in the table above, and keep the status online.
+`vr_status.py` is for discord.py, but the VR status isn't tied to Python. It works the same way with any
+language or library, such as JavaScript (discord.js, Eris), Java (JDA), C# (Discord.Net), Go (discordgo) or
+Rust (serenity), because it's just what the bot tells Discord when it connects.
 
-## Credit
+When a bot connects, it sends Discord an identify message (opcode `2`). Find where your library builds it
+and make it send these values, with the status online:
 
-Values from [devhub-community.fr: bot Discord icône casque VR](https://devhub-community.fr/en/articles/bot-discord-icone-casque-vr/).
+```json
+{
+  "op": 2,
+  "d": {
+    "properties": {
+      "os": "android",
+      "browser": "Discord VR",
+      "device": "Discord VR"
+    },
+    "presence": { "status": "online" }
+  }
+}
+```
+
+Many libraries let you set these `properties` as a client option. Otherwise you can change them where the
+library sends the identify message, like `vr_status.py` does for discord.py. The same rules apply: the
+status must be online, and the bot needs a full restart.
